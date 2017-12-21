@@ -1,0 +1,32 @@
+{{extend 'layout.html'}}
+
+<H1>Relations</H1>
+{{=BEAUTIFY(relation_create)}}
+
+
+
+<style>
+{{include 'sampleList.css'}}
+</style>
+
+<!-- Z tej stronki: http://www.javascriptkit.com/script/script2/tablefilter.shtml -->
+<script language="javascript" type="text/javascript" src="/{{=request.application}}/static/actb.js"></script><!-- External script -->
+<script language="javascript" type="text/javascript" src="/{{=request.application}}/static/tablefilter.js"></script>
+<script language="javascript" type="text/javascript">
+	//<![CDATA[
+	var segmTableFilters = {
+		btn: false,
+		col_4: "select",
+		btn_text: false,
+		//col_width: ["0","15%",null,null, null]
+	}
+	var relTableFilters = {
+		btn: false,
+		col_4: "select",
+		btn_text: false,
+	}
+	
+	setFilterGrid("sampleList", 0,segmTableFilters);
+	setFilterGrid("relationList", 0,relTableFilters);
+	//]]>
+</script> 

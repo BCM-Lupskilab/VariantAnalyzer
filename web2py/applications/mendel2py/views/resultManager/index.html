@@ -1,0 +1,60 @@
+{{response.files.append(URL(request.application,'static','updateFieldAjax.js'))}}
+{{extend 'layout.html'}}
+<style >
+div.web2py_counter{visibility:hidden;}
+</style>
+
+ {{=BEAUTIFY(result_import)}}
+    {{=BEAUTIFY(addResForm)}}
+     
+  <div id="doublescroll">    
+  <div>  
+  
+    {{=BEAUTIFY(result_form)}}
+     </div>
+     </div>
+
+
+
+    
+<style>
+{{include 'sampleList.css'}}
+{{include 'resultManager/scrollbars.css'}}
+</style>
+
+
+<!-- Z tej stronki: http://www.javascriptkit.com/script/script2/tablefilter.shtml -->
+<script language="javascript" type="text/javascript" src="/{{=request.application}}/static/actb.js"></script><!-- External script -->
+<script language="javascript" type="text/javascript" src="/{{=request.application}}/static/tablefilter.js"></script>
+<script language="javascript" type="text/javascript">
+ function DoubleScroll(element) {
+        var scrollbar= document.createElement('div');
+        scrollbar.appendChild(document.createElement('div'));
+        scrollbar.style.overflow= 'auto';
+        scrollbar.style.overflowY= 'hidden';
+        scrollbar.firstChild.style.width= element.scrollWidth+'px';
+        scrollbar.firstChild.style.paddingTop= '1px';
+        scrollbar.firstChild.appendChild(document.createTextNode('\xA0'));
+        scrollbar.onscroll= function() {
+            element.scrollLeft= scrollbar.scrollLeft;
+        };
+        element.onscroll= function() {
+            scrollbar.scrollLeft= element.scrollLeft;
+        };
+        element.parentNode.insertBefore(scrollbar, element);
+    }
+
+    DoubleScroll(document.getElementById('doublescroll'));
+	//<![CDATA[
+	var segmTableFilters = {
+		btn: false,
+		rows_counter: true,
+		//col_1: "select",
+		//btn_text: false,
+		//col_width: ["0","15%",null,null, null]
+	}
+	
+	
+	setFilterGrid("result_f", 0,segmTableFilters);	
+	//]]>
+</script> 
